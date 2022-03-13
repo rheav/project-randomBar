@@ -1,9 +1,9 @@
 let drink = {
   fetchDrink: function (letra) {
-    letra: "a",
-      fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letra}`)
-        .then((response) => response.json())
-        .then((data) => this.drinkData(data));
+    letra: "a";
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letra}`)
+      .then((response) => response.json())
+      .then((data) => this.drinkData(data));
   },
   drinkData: function (data) {
     // Conta;r quantos drinks tem na letra e rodar de 0 até Y para aleatorizar a escolha do drink
@@ -24,6 +24,7 @@ let drink = {
       document.querySelector(".outOfMenu").classList.add("hide");
     }
     console.log(data.drinks.length);
+    console.log(rndInt);
     // Descontruo o objeto e trago alguns primeiros elementos, puxando a posição rndInt do data.drinks
     const { strDrink, strCategory, strAlcoholic, strGlass, strInstructions, ...ingDoses } = data.drinks[rndInt];
 
@@ -96,7 +97,13 @@ let drink = {
 
   searchDrink: function () {
     drink.fetchDrink(document.querySelector(".search-bar").value);
-    document.querySelector(".search button").innerHTML = "search again";
+    if (document.querySelector(".search-bar").value == "") {
+      console.log("Choose letter");
+      document.querySelector(".search button").classList.add("error");
+      document.querySelector(".search button").innerHTML = "insert letter";
+    } else {
+      document.querySelector(".search button").innerHTML = "search again";
+    }
   },
 };
 drink.fetchDrink("a");
