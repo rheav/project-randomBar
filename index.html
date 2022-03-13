@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,300;0,700;1,300&family=Poiret+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="card">
+      <div class="heading-main">
+        <h1>Random Bar</h1>
+        <h3>Discover your today's drink by entering a letter</h3>
+        <h4>Our system will suggest you a random drink</h4>
+      </div>
+      <div class="search">
+        <input type="text" placeholder="your letter" class="search-bar" maxlength="1" />
+        <button class="search-btn">search</button>
+      </div>
+      <div class="outOfMenu hide">
+        <h3>Sorry, but we don't have any drink with the informed letter/number in our menu 😓.</h3>
+        <h3>Please, try another number/letter.</h3>
+      </div>
+
+      <div class="conteudo-drink">
+        <div class="strDrink"><h2></h2></div>
+        <div class="strCategory destaque">
+          <h3>Category</h3>
+          <span></span>
+        </div>
+        <div class="strAlcoholic destaque">
+          <h3>Recipe</h3>
+          <span></span>
+        </div>
+        <div class="strGlass destaque">
+          <h3>Glass type</h3>
+          <span></span>
+        </div>
+        <div class="ingredientesDrink destaque">
+          <h3>Ingredients</h3>
+          <span></span>
+        </div>
+        <div class="strInstructions destaque">
+          <h3>Instructions</h3>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
