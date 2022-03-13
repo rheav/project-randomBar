@@ -26,12 +26,12 @@ let drink = {
     console.log(data.drinks.length);
     console.log(rndInt);
     // Descontruo o objeto e trago alguns primeiros elementos, puxando a posição rndInt do data.drinks
-    const { strDrink, strCategory, strAlcoholic, strGlass, strInstructions, ...ingDoses } = data.drinks[rndInt];
+    const { strDrink, strDrinkThumb, strCategory, strAlcoholic, strGlass, strInstructions, ...ingDoses } = data.drinks[rndInt];
 
     //console.log(strDrink, strCategory, strAlcoholic, strGlass, strInstructions, ingDoses);
-    this.organizeIngredMethods(strDrink, strCategory, strAlcoholic, strGlass, strInstructions, ingDoses);
+    this.organizeIngredMethods(strDrink, strDrinkThumb, strCategory, strAlcoholic, strGlass, strInstructions, ingDoses);
   },
-  organizeIngredMethods: function (strDrink, strCategory, strAlcoholic, strGlass, strInstructions, ingDoses) {
+  organizeIngredMethods: function (strDrink, strDrinkThumb, strCategory, strAlcoholic, strGlass, strInstructions, ingDoses) {
     let ingredientesDrink = [];
     let medidasDrink = [];
     // Preciso agora conseguir acessar cada ingDoses.strIngredient[1-15]
@@ -83,11 +83,12 @@ let drink = {
     // adicionar a vírgula+espaço como separador
     var addEspacoIngMed = joinedIngMed.join(", ");
 
-    this.insertData(strDrink, strCategory, strAlcoholic, strGlass, strInstructions, addEspacoIngMed);
+    this.insertData(strDrink, strDrinkThumb, strCategory, strAlcoholic, strGlass, strInstructions, addEspacoIngMed);
   },
 
-  insertData: function (strDrink, strCategory, strAlcoholic, strGlass, strInstructions, addEspacoIngMed) {
+  insertData: function (strDrink, strDrinkThumb, strCategory, strAlcoholic, strGlass, strInstructions, addEspacoIngMed) {
     document.querySelector(".strDrink h2").innerHTML = strDrink;
+    document.querySelector(".strDrinkThumb img").src = strDrinkThumb;
     document.querySelector(".strCategory span").innerHTML = `${strCategory}`;
     document.querySelector(".strAlcoholic span").innerHTML = `${strAlcoholic}`;
     document.querySelector(".strGlass span").innerHTML = `${strGlass}`;
@@ -106,6 +107,26 @@ let drink = {
     }
   },
 };
+
+const requestUrl =
+  "https://api.unsplash.com/search/photos?query=alcoholic-drinks&orientation=landscape&client_id=_GJMivHSQPKt7bOeVMM7qjZcSMsbvovA1hVrY9uuZbg";
+const getImagesButton = document.querySelector(".search button");
+const imageToDisplay = document.querySelector(".imageToDisplay");
+
+getImagesButton.addEventListener("click", async () => {
+  let randomImage = await getNewImage();
+  document.querySelector(".bg-level").style.backgroundImage = "url(" + randomImage + ")";
+});
+
+async function getNewImage() {
+  let randomNumber = Math.floor(Math.random() * 10);
+  return fetch(requestUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      let allImages = data.results[randomNumber];
+      return allImages.urls.regular;
+    });
+}
 drink.fetchDrink("a");
 document.querySelector(".search button").addEventListener("click", drink.searchDrink);
 document.querySelector(".search-bar").addEventListener("keyup", function (e) {
@@ -113,8 +134,3 @@ document.querySelector(".search-bar").addEventListener("keyup", function (e) {
     drink.searchDrink();
   }
 });
-
-//? ORGANIZAÇÃO
-
-//! O que falta fazer?
-//# Finalizar CSS
