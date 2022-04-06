@@ -17,7 +17,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Poiret One", cursive !important;
+  font-family: "Poiret One", sans !important;
 }
 
 .bg-level {
@@ -138,7 +138,11 @@ button.search-btn:hover {
 
 .heading-main {
   text-align: center;
-  line-height: 40px;
+  line-height: 5em;
+}
+
+.sub-heading-main {
+  line-height: 2rem;
 }
 
 .heading-main h1 {
@@ -152,7 +156,7 @@ button.search-btn:hover {
 }
 
 .heading-main h3 {
-  margin-bottom: 0;
+  margin-bottom: 1rem;
 }
 .heading-main h4 {
   margin-top: 0;
