@@ -108,25 +108,25 @@ let drink = {
   },
 };
 
-const requestUrl =
-  "https://api.unsplash.com/search/photos?query=alcoholic-drinks&orientation=landscape&client_id=_GJMivHSQPKt7bOeVMM7qjZcSMsbvovA1hVrY9uuZbg";
-const getImagesButton = document.querySelector(".search button");
-const imageToDisplay = document.querySelector(".imageToDisplay");
+// const requestUrl =
+//   "https://api.unsplash.com/search/photos?query=alcoholic-drinks&orientation=landscape&client_id=_GJMivHSQPKt7bOeVMM7qjZcSMsbvovA1hVrY9uuZbg";
+// const getImagesButton = document.querySelector(".search button");
+// const imageToDisplay = document.querySelector(".imageToDisplay");
 
-getImagesButton.addEventListener("click", async () => {
-  let randomImage = await getNewImage();
-  document.querySelector(".bg-level").style.backgroundImage = "url(" + randomImage + ")";
-});
+// getImagesButton.addEventListener("click", async () => {
+//   let randomImage = await getNewImage();
+//   document.querySelector(".bg-level").style.backgroundImage = "url(" + randomImage + ")";
+// });
 
-async function getNewImage() {
-  let randomNumber = Math.floor(Math.random() * 10);
-  return fetch(requestUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      let allImages = data.results[randomNumber];
-      return allImages.urls.regular;
-    });
-}
+// async function getNewImage() {
+//   let randomNumber = Math.floor(Math.random() * 10);
+//   return fetch(requestUrl)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       let allImages = data.results[randomNumber];
+//       return allImages.urls.regular;
+//     });
+// }
 drink.fetchDrink("a");
 document.querySelector(".search button").addEventListener("click", drink.searchDrink);
 document.querySelector(".search-bar").addEventListener("keyup", function (e) {
