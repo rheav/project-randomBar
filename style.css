@@ -66,7 +66,7 @@ h6 {
   text-align: center;
   text-shadow: 0 0 0 transparent, 0 0 10px #ffbf00, 0 0 20px rgba(255, 0, 60, 0.5), 0 0 40px #ffbf00, 0 0 50px #ffbf00, 0 0 70px #ffbf00,
     0 0 100px #ffbf00, 0 0 200px #ffbf00, 0 0 300px #ffbf00;
-  animation: animate 2s infinite alternate;
+  animation: animate 5s infinite alternate;
 }
 
 .destaque {
